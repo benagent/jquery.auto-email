@@ -5,7 +5,7 @@ This plugin autocompletes email addresses when supplied with an email domain.  I
 
 ### Demo
 
-https://demo.hisune.com/jquery-auto-email
+https://demo.hisune.com/jquery.auto-email
 
 ### To use this plugin, download the file and on pageload, call:
 
