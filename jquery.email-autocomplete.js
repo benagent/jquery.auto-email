@@ -1,5 +1,5 @@
 /*
- * jquery.auto-email - 1.0.0
+ * jquery.auto-email - 1.0.1
  * An autocomplete JQuery plugin for email fields.
  *  
  * https://github.com/hisune/jquery.auto-email
@@ -83,6 +83,7 @@
                 }else{
                     emailDomain = emailsDirty[emailsDirty.length - 1];
                     // get all possible domain matches
+					domains.unshift(defaultDomain);
                     var matches = $.grep(domains, function (el, index) {
                         // First part of emailDomain should match first part of domain
                         return emailDomain === el.substr(0, emailDomain.length);
