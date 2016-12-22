@@ -1,3 +1,9 @@
+/*
+ * jquery.auto-email - 1.0.0
+ * An autocomplete JQuery plugin for email fields.
+ *  
+ * https://github.com/hisune/jquery.auto-email
+ */
 (function ($) {
 
     $.fn.autoEmail = function (domains, defaultDomain, multi) {
