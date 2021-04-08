@@ -1,8 +1,8 @@
 /*
- * jquery.auto-email - 1.0.1
+ * jquery.auto-email - 1.0.2
  * An autocomplete JQuery plugin for email fields.
- *  
- * https://github.com/hisune/jquery.auto-email
+ *
+ * https://github.com/benagent/jquery.auto-email
  */
 (function ($) {
 
@@ -25,6 +25,13 @@
                 }
 
                 e.preventDefault();
+
+                // Save the input type if it's incompatible with text selection properties
+                var originalType;
+                if(["text", "search", "password", "url", "tel"].indexOf($this[0].type) === -1) {
+                    originalType = $this[0].type;
+                    $this[0].type = "text";
+                }
 
                 // save selection start for later
                 var selStart = $(this)[0].selectionStart;
@@ -83,7 +90,7 @@
                 }else{
                     emailDomain = emailsDirty[emailsDirty.length - 1];
                     // get all possible domain matches
-					domains.unshift(defaultDomain);
+                    domains.unshift(defaultDomain);
                     var matches = $.grep(domains, function (el, index) {
                         // First part of emailDomain should match first part of domain
                         return emailDomain === el.substr(0, emailDomain.length);
@@ -99,6 +106,10 @@
                     $this[0].selectionStart = selStart;
                     $this[0].selectionEnd = selStart + subStr.length + (emailsDirty.length < 2 ? 1 : 0);
                 }
+
+                // Restore the input type if necessary
+                if(originalType)
+                    $this[0].type = originalType;
 
             });
 
