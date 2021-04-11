@@ -66,6 +66,10 @@
                     $this[0].selectionStart = selEnd + ($this.val().length - len);
                     $this[0].selectionEnd = selEnd + ($this.val().length - len);
 
+	       	        // Restore the input type if necessary
+  	        	    if(originalType)
+      	        	    $this[0].type = originalType;
+
                     return;
                 }
 
@@ -85,6 +89,11 @@
                         emailDomain = "";
                         matches = [defaultDomain];
                     }else{
+
+	        	        // Restore the input type if necessary
+    	        	    if(originalType)
+        	        	    $this[0].type = originalType;
+
                         return;
                     }
                 }else{
@@ -92,6 +101,11 @@
                     // get all possible domain matches
                     domains.unshift(defaultDomain);
                     var matches = $.grep(domains, function (el, index) {
+
+	        	        // Restore the input type if necessary
+    	        	    if(originalType)
+        	        	    $this[0].type = originalType;
+
                         // First part of emailDomain should match first part of domain
                         return emailDomain === el.substr(0, emailDomain.length);
                     });
